@@ -2,7 +2,7 @@ Summary:	Versatile network test and debugging tool
 Summary(pl):	Proste narzêdzie do testowania sieci
 Name:		nc
 Version:	1.10
-Release:	14
+Release:	15
 License:	None, see README
 Group:		Networking/Admin
 Group(de):	Netzwerkwesen/Administration
@@ -13,6 +13,7 @@ Patch0:		%{name}-arm.patch
 Patch1:		%{name}-v6-20000918.patch.gz
 Patch2:		%{name}-proto.patch
 Patch3:		%{name}-halfclose.patch
+Patch4:		%{name}-timeout.patch
 URL:		http://www.l0pht.com/~weld/netcat/
 Icon:		netcat.xpm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -47,12 +48,13 @@ standardowe uniksowe narzêdzie.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 # 'make linux' works too, but builds a static binary. 
 %{__make} generic \
 	DFLAGS="-DINET6 -DTELNET -DGAPING_SECURITY_HOLE" \
-	CFLAGS="%{rpmcflags}"
+	CC="%{__cc} %{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
