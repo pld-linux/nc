@@ -1,0 +1,118 @@
+--- nc/netcat.c.orig	Wed May  2 15:45:17 2001
++++ nc/netcat.c	Mon May 14 14:27:25 2001
+@@ -59,6 +59,14 @@
+ #define RAND rand
+ #endif /* HAVE_RANDOM */
+ 
++/* #define POSIX_SETJMP		/* If you want timeouts to work under the */
++				/* posixly correct, yet non-standard glibc-2.x*/
++				/* then define this- you may also need it for */
++				/* IRIX, and maybe some others */
++#ifdef LINUX
++#define POSIX_SETJMP
++#endif
++
+ /* includes: */
+ #include <sys/time.h>		/* timeval, time_t */
+ #include <setjmp.h>		/* jmp_buf et al */
+@@ -106,7 +117,11 @@
+ #define PINF struct port_poop
+ 
+ /* globals: */
++#ifdef POSIX_SETJMP
++sigjmp_buf jbuf;		/* timer crud */
++#else
+ jmp_buf jbuf;			/* timer crud */
++#endif
+ int jval = 0;			/* timer crud */
+ int netfd = -1;
+ int ofd = 0;			/* hexdump output fd */
+@@ -232,7 +247,11 @@
+   alarm (0);
+   if (jval == 0)
+     bail ("spurious timer interrupt!");
++#ifdef POSIX_SETJMP
++  siglongjmp (jbuf, jval);
++#else
+   longjmp (jbuf, jval);
++#endif
+ }
+ 
+ /* arm :
+@@ -744,12 +763,21 @@
+ 
+ /* wrap connect inside a timer, and hit it */
+   arm (1, o_wait);
++#ifdef POSIX_SETJMP
++  if (sigsetjmp (jbuf,1) == 0) {
++    rr = connect (nnetfd, (SA *)remend, sizeof (SA));
++  } else {				/* setjmp: connect failed... */
++    rr = -1;
++    errno = ETIMEDOUT;			/* fake it */
++  }
++#else
+   if (setjmp (jbuf) == 0) {
+     rr = connect (nnetfd, (SA *)remend, sizeof (SA));
+   } else {				/* setjmp: connect failed... */
+     rr = -1;
+     errno = ETIMEDOUT;			/* fake it */
+   }
++#endif
+   arm (0, 0);
+   if (rr == 0)
+     return (nnetfd);
+@@ -821,7 +849,8 @@
+   if (o_udpmode) {
+     x = sizeof (SA);		/* retval for recvfrom */
+     arm (2, o_wait);		/* might as well timeout this, too */
+-    if (setjmp (jbuf) == 0) {	/* do timeout for initial connect */
++#ifdef POSIX_SETJMP
++    if (sigsetjmp (jbuf,1) == 0) {	/* do timeout for initial connect */
+       rr = recvfrom		/* and here we block... */
+ 	(nnetfd, bigbuf_net, BIGSIZ, MSG_PEEK, (SA *) remend, &x);
+ Debug (("dolisten/recvfrom ding, rr = %d, netbuf %s ", rr, bigbuf_net))
+@@ -842,14 +871,44 @@
+     rr = connect (nnetfd, (SA *)remend, sizeof (SA));
+     goto whoisit;
+   } /* o_udpmode */
++#else
++    if (setjmp (jbuf) == 0) {   /* do timeout for initial connect */
++      rr = recvfrom             /* and here we block... */
++        (nnetfd, bigbuf_net, BIGSIZ, MSG_PEEK, (SA *) remend, &x);
++Debug (("dolisten/recvfrom ding, rr = %d, netbuf %s ", rr, bigbuf_net))
++    } else  
++      goto dol_tmo;             /* timeout */
++    arm (0, 0);
++/* I'm not completely clear on how this works -- BSD seems to make UDP
++   just magically work in a connect()ed context, but we'll undoubtedly run
++   into systems this deal doesn't work on.  For now, we apparently have to
++   issue a connect() on our just-tickled socket so we can write() back.
++   Again, why the fuck doesn't it just get filled in and taken care of?!
++   This hack is anything but optimal.  Basically, if you want your listener
++   to also be able to send data back, you need this connect() line, which
++   also has the side effect that now anything from a different source or even a
++   different port on the other end won't show up and will cause ICMP errors.
++   I guess that's what they meant by "connect".
++   Let's try to remember what the "U" is *really* for, eh? */
++    rr = connect (nnetfd, (SA *)remend, sizeof (SA));
++    goto whoisit;
++  } /* o_udpmode */ 
++#endif
+ 
+ /* fall here for TCP */
+   x = sizeof (SA);		/* retval for accept */
+   arm (2, o_wait);		/* wrap this in a timer, too; 0 = forever */
++#ifdef POSIX_SETJMP
++  if (sigsetjmp (jbuf,1) == 0) {
++    rr = accept (nnetfd, (SA *)remend, &x);
++  } else
++    goto dol_tmo;		/* timeout */
++#else
+   if (setjmp (jbuf) == 0) {
+     rr = accept (nnetfd, (SA *)remend, &x);
+   } else
+     goto dol_tmo;		/* timeout */
++#endif
+   arm (0, 0);
+   close (nnetfd);		/* dump the old socket */
+   nnetfd = rr;			/* here's our new one */
