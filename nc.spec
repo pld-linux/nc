@@ -39,7 +39,7 @@ standardowe uniksowe narzêdzie.
 
 %build
 # 'make linux' works too, but builds a static binary. 
-make generic DFLAGS=-DTELNET CFLAGS="$RPM_OPT_FLAGS"
+make generic DFLAGS=-DTELNET CFLAGS="$RPM_OPT_FLAGS -DGAPING_SECURITY_HOLE"
 
 %install
 rm -rf $RPM_BUILD_ROOT
