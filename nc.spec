@@ -2,7 +2,7 @@ Summary:	Versatile network test and debugging tool
 Summary(pl):	Proste narzêdzie do testowania sieci
 Name:		nc
 Version:	1.10
-Release:	12
+Release:	13
 License:	None, see README
 Group:		Networking/Admin
 Group(de):	Netzwerkwesen/Administration
@@ -51,7 +51,7 @@ standardowe uniksowe narzêdzie.
 # 'make linux' works too, but builds a static binary. 
 %{__make} generic \
 	DFLAGS="-DINET6 -DTELNET -DGAPING_SECURITY_HOLE" \
-	CFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}"
+	CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
