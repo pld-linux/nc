@@ -1,8 +1,10 @@
 Summary:	Versatile network test and debugging tool
+Summary(es):	Herramienta de prueba e depuración para servicios de red
 Summary(pl):	Proste narzêdzie do testowania sieci
+Summary(pt_BR):	Ferramenta de teste e depuração para serviços de rede
 Name:		nc
 Version:	1.10
-Release:	17
+Release:	18
 License:	None, see README
 Group:		Networking/Admin
 Source0:	http://www.atstake.com/research/tools/network_utilities/%{name}110.tgz
@@ -29,6 +31,11 @@ capabilities. Netcat, or "nc" as the actual program is named, should
 have been supplied long ago as another one of those cryptic but
 standard Unix tools.
 
+%description -l es
+NetCat es un cliente de red mínimo. Puede ser usado para crear
+conexiones TCP a puertos arbitrarios y puede simular conexiones
+sobre UDP. También puede oír puertos.
+
 %description -l pl
 Netcat to proste uniksowe narzêdzie, które odbiera i wysy³a dane
 poprzez po³±czenia sieciowe protoko³ami TCP lub UDP. Jest
@@ -40,6 +47,11 @@ po³±czenia, jaki mo¿e byæ potrzebny, i ma wbudowanych kilka ciekawych
 funkcji. Netcat - albo "nc", jak siê nazywa w³a¶ciwy program, powinien
 by³ byæ dostarczany ju¿ dawno temu jako kolejne tajemnicze, ale
 standardowe uniksowe narzêdzie.
+
+%description -l pt_BR
+O NetCat é um cliente de rede mínimo. Pode ser usado para criar
+conexões TCP para portas arbitrárias e pode simular conexões sobre
+UDP. Também pode receber conexões.
 
 %prep
 %setup -c -n nc -q
