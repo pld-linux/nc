@@ -7,7 +7,7 @@ Copyright:   None, see README
 Group:       Networking/Admin
 Icon:        netcat.xpm
 Source:      ftp://ftp.avian.org/src/hacks/nc110.tgz
-BuildRoot:   /tmp/%{name}-%{version}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description 
 Netcat is a simple Unix utility which reads and writes data across
