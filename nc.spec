@@ -2,7 +2,7 @@ Summary:	Versatile network test and debugging tool
 Summary(pl):	Proste narzêdzie do testowania sieci
 Name:		nc
 Version:	1.10
-Release:	8
+Release:	9
 Copyright:	None, see README
 Group:		Networking/Admin
 Group(pl):	Sieciowe/Administacyjne
@@ -11,6 +11,7 @@ Source1:	http://www.openbsd.org/src/usr.bin/nc.1
 Patch:		nc-arm.patch
 Icon:		netcat.xpm
 BuildRoot:	/tmp/%{name}-%{version}-root
+Obsoletes:	netcat
 
 %description 
 Netcat is a simple Unix utility which reads and writes data across network
@@ -39,7 +40,7 @@ standardowe uniksowe narzêdzie.
 
 %build
 # 'make linux' works too, but builds a static binary. 
-make generic DFLAGS=-DTELNET CFLAGS="$RPM_OPT_FLAGS -DGAPING_SECURITY_HOLE"
+make generic DFLAGS="-DTELNET -DGAPING_SECURITY_HOLE" CFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
