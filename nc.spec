@@ -2,7 +2,7 @@ Summary:	Versatile network test and debugging tool
 Summary(pl):	Proste narzêdzie do testowania sieci
 Name:		nc
 Version:	1.10
-Release:	16
+Release:	17
 License:	None, see README
 Group:		Networking/Admin
 Source0:	http://www.l0pht.com/users/10pht/%{name}110.tgz
@@ -61,13 +61,11 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 install nc $RPM_BUILD_ROOT%{_bindir}/nc
 install %{SOURCE1} $RPM_BUILD_ROOT%{_mandir}/man1
 
-gzip -9nf README Changelog data/*
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz scripts data
+%doc  README Changelog scripts data
 %attr(755,root,root) %{_bindir}/nc
 %{_mandir}/man1/*
