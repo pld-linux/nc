@@ -2,13 +2,15 @@ Summary:	Versatile network test and debugging tool
 Summary(pl):	Proste narzêdzie do testowania sieci
 Name:		nc
 Version:	1.10
-Release:	9
+Release:	10
 Copyright:	None, see README
 Group:		Networking/Admin
-Group(pl):	Sieciowe/Administracyjne
+Group(de):	Netzwerkwesen/Administration
+Group(pl):	Sieciowe/Administacyjne
 Source0:	ftp://ftp.avian.org/src/hacks/%{name}110.tgz
 Source1:	http://www.openbsd.org/src/usr.bin/%{name}.1
-Patch0:		nc-arm.patch
+Patch0:		%{name}-arm.patch
+Patch1:		%{name}-v6-20000918.patch.gz
 Icon:		netcat.xpm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	netcat
@@ -38,11 +40,14 @@ standardowe uniksowe narzêdzie.
 
 %prep
 %setup -c -n nc -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 # 'make linux' works too, but builds a static binary. 
-%{__make} generic DFLAGS="-DTELNET -DGAPING_SECURITY_HOLE" CFLAGS="$RPM_OPT_FLAGS"
+%{__make} generic \
+	DFLAGS="-DINET6 -DTELNET -DGAPING_SECURITY_HOLE" \
+	CFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
