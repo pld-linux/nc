@@ -49,9 +49,9 @@ install -s nc $RPM_BUILD_ROOT%{_bindir}/nc
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %doc README Changelog scripts data
-%attr(755, root, root) %{_bindir}/nc
+%attr(755,root,root) %{_bindir}/nc
 
 %changelog 
 * Sat Sep 26 1998 Marcin 'Qrczak' Kowalczyk <qrczak@knm.org.pl>
