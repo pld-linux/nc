@@ -17,7 +17,7 @@ Icon:		netcat.xpm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	netcat
 
-%description 
+%description
 Netcat is a simple Unix utility which reads and writes data across
 network connections, using TCP or UDP protocol. It is designed to be a
 reliable "back-end" tool that can be used directly or easily driven by
@@ -49,7 +49,7 @@ standardowe uniksowe narzêdzie.
 %patch4 -p1
 
 %build
-# 'make linux' works too, but builds a static binary. 
+# 'make linux' works too, but builds a static binary.
 %{__make} generic \
 	DFLAGS="-DINET6 -DTELNET -DGAPING_SECURITY_HOLE" \
 	CC="%{__cc} %{rpmcflags}"
