@@ -1,12 +1,13 @@
-Summary:     Versatile network test and debugging tool
-Summary(pl): Proste narzêdzie do testowania sieci
-Name:        nc
-Version:     1.10
-Release:     4
-Copyright:   None, see README
-Group:       Networking/Admin
-Icon:        netcat.xpm
-Source:      ftp://ftp.avian.org/src/hacks/nc110.tgz
+Summary:	Versatile network test and debugging tool
+Summary(pl):	Proste narzêdzie do testowania sieci
+Name:		nc
+Version:	1.10
+Release:	4
+Copyright:	None, see README
+Group:		Networking/Admin
+Icon:		netcat.xpm
+Source:		ftp://ftp.avian.org/src/hacks/nc110.tgz
+Patch:		nc-arm.patch
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description 
@@ -33,6 +34,7 @@ kolejne tajemnicze, ale standardowe uniksowe narzêdzie.
 
 %prep
 %setup -c -n nc -q
+%patch -p1
 
 %build
 # 'make linux' works too, but builds a static binary. 
@@ -45,10 +47,12 @@ install -d $RPM_BUILD_ROOT%{_bindir}
 
 install -s nc $RPM_BUILD_ROOT%{_bindir}/nc
 
+gzip -9nf README Changelog data/*
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README Changelog scripts data
+%doc README.gz Changelog.gz scripts data
 %attr(755,root,root) %{_bindir}/nc
