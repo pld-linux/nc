@@ -52,12 +52,3 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README Changelog scripts data
 %attr(755,root,root) %{_bindir}/nc
-
-%changelog 
-* Sat Sep 26 1998 Marcin 'Qrczak' Kowalczyk <qrczak@knm.org.pl>
-  [1.1-2]
-- use %{name} and %{version} macros,
-- added pl translation,
-- added %setup -q parameter,
-- `mkdir -p' replaced with more standard `install -d',
-- fixed x attr of scripts in the documentation.
