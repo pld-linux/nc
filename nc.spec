@@ -51,7 +51,7 @@ standardowe uniksowe narzêdzie.
 # 'make linux' works too, but builds a static binary. 
 %{__make} generic \
 	DFLAGS="-DINET6 -DTELNET -DGAPING_SECURITY_HOLE" \
-	CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}"
+	CFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
