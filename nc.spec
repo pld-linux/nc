@@ -2,8 +2,8 @@ Summary:	Versatile network test and debugging tool
 Summary(pl):	Proste narzêdzie do testowania sieci
 Name:		nc
 Version:	1.10
-Release:	11
-Copyright:	None, see README
+Release:	12
+License:	None, see README
 Group:		Networking/Admin
 Group(de):	Netzwerkwesen/Administration
 Group(pl):	Sieciowe/Administacyjne
@@ -11,6 +11,8 @@ Source0:	ftp://ftp.avian.org/src/hacks/%{name}110.tgz
 Source1:	http://www.openbsd.org/src/usr.bin/%{name}.1
 Patch0:		%{name}-arm.patch
 Patch1:		%{name}-v6-20000918.patch.gz
+Patch2:		%{name}-proto.patch
+Patch3:		%{name}-halfclose.patch
 Icon:		netcat.xpm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	netcat
@@ -42,6 +44,8 @@ standardowe uniksowe narzêdzie.
 %setup -c -n nc -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 # 'make linux' works too, but builds a static binary. 
