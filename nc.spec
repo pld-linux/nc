@@ -6,6 +6,7 @@ Release:	17
 License:	None, see README
 Group:		Networking/Admin
 Source0:	http://www.l0pht.com/users/10pht/%{name}110.tgz
+# Source0-md5:	402632f2fe01c169ff19a0ad6e9d608c
 Source1:	http://www.openbsd.org/src/usr.bin/%{name}.1
 Patch0:		%{name}-arm.patch
 Patch1:		%{name}-v6-20000918.patch.gz
