@@ -5,8 +5,6 @@ Version:	1.10
 Release:	16
 License:	None, see README
 Group:		Networking/Admin
-Group(de):	Netzwerkwesen/Administration
-Group(pl):	Sieciowe/Administracyjne
 Source0:	http://www.l0pht.com/users/10pht/%{name}110.tgz
 Source1:	http://www.openbsd.org/src/usr.bin/%{name}.1
 Patch0:		%{name}-arm.patch
