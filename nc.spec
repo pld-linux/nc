@@ -2,7 +2,7 @@ Summary:	Versatile network test and debugging tool
 Summary(pl):	Proste narzêdzie do testowania sieci
 Name:		nc
 Version:	1.10
-Release:	7
+Release:	8
 Copyright:	None, see README
 Group:		Networking/Admin
 Group(pl):	Sieciowe/Administacyjne
