@@ -10,7 +10,7 @@ Source0:	ftp://ftp.avian.org/src/hacks/%{name}110.tgz
 Source1:	http://www.openbsd.org/src/usr.bin/nc.1
 Patch:		nc-arm.patch
 Icon:		netcat.xpm
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	netcat
 
 %description 
