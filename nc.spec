@@ -41,9 +41,9 @@ make generic DFLAGS=-DTELNET CFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/bin
+install -d $RPM_BUILD_ROOT%{_bindir}
 
-install -s nc $RPM_BUILD_ROOT/usr/bin/nc
+install -s nc $RPM_BUILD_ROOT%{_bindir}/nc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -51,7 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644, root, root, 755)
 %doc README Changelog scripts data
-%attr(755, root, root) /usr/bin/nc
+%attr(755, root, root) %{_bindir}/nc
 
 %changelog 
 * Sat Sep 26 1998 Marcin 'Qrczak' Kowalczyk <qrczak@knm.org.pl>
