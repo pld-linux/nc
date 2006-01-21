@@ -16,7 +16,6 @@ Patch2:		%{name}-proto.patch
 Patch3:		%{name}-halfclose.patch
 Patch4:		%{name}-timeout.patch
 URL:		http://www.atstake.com/research/tools/network_utilities/
-Icon:		netcat.xpm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	netcat
 
