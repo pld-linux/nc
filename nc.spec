@@ -4,8 +4,8 @@ Summary(pl):	Proste narzêdzie do testowania sieci
 Summary(pt_BR):	Ferramenta de teste e depuração para serviços de rede
 Name:		nc
 Version:	1.10
-Release:	18
-License:	None, see README
+Release:	19
+License:	Public Domain
 Group:		Networking/Admin
 Source0:	http://www.atstake.com/research/tools/network_utilities/%{name}110.tgz
 # Source0-md5:	402632f2fe01c169ff19a0ad6e9d608c
@@ -17,7 +17,6 @@ Patch3:		%{name}-halfclose.patch
 Patch4:		%{name}-timeout.patch
 URL:		http://www.atstake.com/research/tools/network_utilities/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Obsoletes:	netcat
 
 %description
 Netcat is a simple Unix utility which reads and writes data across
