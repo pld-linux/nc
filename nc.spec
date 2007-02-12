@@ -1,7 +1,7 @@
 Summary:	Versatile network test and debugging tool
-Summary(es):	Herramienta de prueba e depuración para servicios de red
-Summary(pl):	Proste narzêdzie do testowania sieci
-Summary(pt_BR):	Ferramenta de teste e depuração para serviços de rede
+Summary(es.UTF-8):   Herramienta de prueba e depuraciÃ³n para servicios de red
+Summary(pl.UTF-8):   Proste narzÄ™dzie do testowania sieci
+Summary(pt_BR.UTF-8):   Ferramenta de teste e depuraÃ§Ã£o para serviÃ§os de rede
 Name:		nc
 Version:	1.10
 Release:	19
@@ -29,27 +29,27 @@ capabilities. Netcat, or "nc" as the actual program is named, should
 have been supplied long ago as another one of those cryptic but
 standard Unix tools.
 
-%description -l es
-NetCat es un cliente de red mínimo. Puede ser usado para crear
+%description -l es.UTF-8
+NetCat es un cliente de red mÃ­nimo. Puede ser usado para crear
 conexiones TCP a puertos arbitrarios y puede simular conexiones
-sobre UDP. También puede oír puertos.
+sobre UDP. TambiÃ©n puede oÃ­r puertos.
 
-%description -l pl
-Netcat to proste uniksowe narzêdzie, które odbiera i wysy³a dane
-poprzez po³±czenia sieciowe protoko³ami TCP lub UDP. Jest
-zaprojektowane jako wiarygodny "back-end", który mo¿e byæ u¿ywany
-bezpo¶rednio albo sterowany przez inne programy i skrypty.
-Jednocze¶nie mo¿e pomóc w wykrywaniu usterek w sieci albo poznawaniu
-jej od ¶rodka, poniewa¿ mo¿e stworzyæ prawie dowolny rodzaj
-po³±czenia, jaki mo¿e byæ potrzebny, i ma wbudowanych kilka ciekawych
-funkcji. Netcat - albo "nc", jak siê nazywa w³a¶ciwy program, powinien
-by³ byæ dostarczany ju¿ dawno temu jako kolejne tajemnicze, ale
-standardowe uniksowe narzêdzie.
+%description -l pl.UTF-8
+Netcat to proste uniksowe narzÄ™dzie, ktÃ³re odbiera i wysyÅ‚a dane
+poprzez poÅ‚Ä…czenia sieciowe protokoÅ‚ami TCP lub UDP. Jest
+zaprojektowane jako wiarygodny "back-end", ktÃ³ry moÅ¼e byÄ‡ uÅ¼ywany
+bezpoÅ›rednio albo sterowany przez inne programy i skrypty.
+JednoczeÅ›nie moÅ¼e pomÃ³c w wykrywaniu usterek w sieci albo poznawaniu
+jej od Å›rodka, poniewaÅ¼ moÅ¼e stworzyÄ‡ prawie dowolny rodzaj
+poÅ‚Ä…czenia, jaki moÅ¼e byÄ‡ potrzebny, i ma wbudowanych kilka ciekawych
+funkcji. Netcat - albo "nc", jak siÄ™ nazywa wÅ‚aÅ›ciwy program, powinien
+byÅ‚ byÄ‡ dostarczany juÅ¼ dawno temu jako kolejne tajemnicze, ale
+standardowe uniksowe narzÄ™dzie.
 
-%description -l pt_BR
-O NetCat é um cliente de rede mínimo. Pode ser usado para criar
-conexões TCP para portas arbitrárias e pode simular conexões sobre
-UDP. Também pode receber conexões.
+%description -l pt_BR.UTF-8
+O NetCat Ã© um cliente de rede mÃ­nimo. Pode ser usado para criar
+conexÃµes TCP para portas arbitrÃ¡rias e pode simular conexÃµes sobre
+UDP. TambÃ©m pode receber conexÃµes.
 
 %prep
 %setup -c -n nc -q
