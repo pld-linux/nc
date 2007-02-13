@@ -1,7 +1,7 @@
 Summary:	Versatile network test and debugging tool
-Summary(es.UTF-8):   Herramienta de prueba e depuración para servicios de red
-Summary(pl.UTF-8):   Proste narzędzie do testowania sieci
-Summary(pt_BR.UTF-8):   Ferramenta de teste e depuração para serviços de rede
+Summary(es.UTF-8):	Herramienta de prueba e depuración para servicios de red
+Summary(pl.UTF-8):	Proste narzędzie do testowania sieci
+Summary(pt_BR.UTF-8):	Ferramenta de teste e depuração para serviços de rede
 Name:		nc
 Version:	1.10
 Release:	19
