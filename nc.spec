@@ -4,7 +4,7 @@ Summary(pl.UTF-8):	Proste narzędzie do testowania sieci
 Summary(pt_BR.UTF-8):	Ferramenta de teste e depuração para serviços de rede
 Name:		nc
 Version:	1.10
-Release:	19
+Release:	21
 License:	Public Domain
 Group:		Networking/Admin
 Source0:	http://www.atstake.com/research/tools/network_utilities/%{name}110.tgz
@@ -31,8 +31,8 @@ standard Unix tools.
 
 %description -l es.UTF-8
 NetCat es un cliente de red mínimo. Puede ser usado para crear
-conexiones TCP a puertos arbitrarios y puede simular conexiones
-sobre UDP. También puede oír puertos.
+conexiones TCP a puertos arbitrarios y puede simular conexiones sobre
+UDP. También puede oír puertos.
 
 %description -l pl.UTF-8
 Netcat to proste uniksowe narzędzie, które odbiera i wysyła dane
@@ -52,7 +52,7 @@ conexões TCP para portas arbitrárias e pode simular conexões sobre
 UDP. Também pode receber conexões.
 
 %prep
-%setup -c -n nc -q
+%setup -c -n %{name} -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
