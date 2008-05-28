@@ -4,7 +4,7 @@ Summary(pl.UTF-8):	Proste narzędzie do testowania sieci
 Summary(pt_BR.UTF-8):	Ferramenta de teste e depuração para serviços de rede
 Name:		nc
 Version:	1.10
-Release:	21
+Release:	22
 License:	Public Domain
 Group:		Networking/Admin
 Source0:	http://www.atstake.com/research/tools/network_utilities/%{name}110.tgz
