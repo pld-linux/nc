@@ -63,7 +63,7 @@ UDP. Também pode receber conexões.
 # 'make linux' works too, but builds a static binary.
 %{__make} generic \
 	DFLAGS="-DINET6 -DTELNET -DGAPING_SECURITY_HOLE" \
-	CC="%{__cc} %{rpmcflags}"
+	CC="%{__cc} %{rpmcppflags} %{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
