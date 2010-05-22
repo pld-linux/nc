@@ -6,8 +6,8 @@ Name:		nc
 Version:	1.10
 Release:	22
 License:	Public Domain
-Group:		Networking/Admin
-Source0:	http://www.atstake.com/research/tools/network_utilities/%{name}110.tgz
+Group:		Networking/Utilities
+Source0:	http://dl.sourceforge.net/nc110/%{name}110.tgz
 # Source0-md5:	402632f2fe01c169ff19a0ad6e9d608c
 Source1:	http://www.openbsd.org/src/usr.bin/%{name}.1
 Patch0:		%{name}-arm.patch
@@ -15,7 +15,7 @@ Patch1:		%{name}-v6-20000918.patch.gz
 Patch2:		%{name}-proto.patch
 Patch3:		%{name}-halfclose.patch
 Patch4:		%{name}-timeout.patch
-URL:		http://www.atstake.com/research/tools/network_utilities/
+URL:		http://nc110.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
