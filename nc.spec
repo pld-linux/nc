@@ -12,6 +12,7 @@ Source0:	http://dl.sourceforge.net/nc110/%{name}110.tgz
 Source1:	http://www.openbsd.org/src/usr.bin/%{name}.1
 Patch0:		%{name}-arm.patch
 Patch1:		%{name}-v6-20000918.patch.gz
+# Patch1-md5:	84d850745dd860aedce64b518e0e3330
 Patch2:		%{name}-proto.patch
 Patch3:		%{name}-halfclose.patch
 Patch4:		%{name}-timeout.patch
