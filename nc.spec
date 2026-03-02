@@ -4,7 +4,7 @@ Summary(pl.UTF-8):	Proste narzędzie do testowania sieci
 Summary(pt_BR.UTF-8):	Ferramenta de teste e depuração para serviços de rede
 Name:		nc
 Version:	1.10
-Release:	22
+Release:	23
 License:	Public Domain
 Group:		Networking/Utilities
 Source0:	http://dl.sourceforge.net/nc110/%{name}110.tgz
