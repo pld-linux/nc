@@ -1,0 +1,20 @@
+--- nc/netcat.c.orig	2026-03-09 00:00:00.000000000 +0100
++++ nc/netcat.c	2026-03-09 00:00:01.000000000 +0100
+@@ -253,7 +253,7 @@
+
+ /* catch :
+    no-brainer interrupt handler */
+-void catch ()
++void catch (int unused __attribute__((unused)))
+ {
+   errno = 0;
+   if (o_verbose > 1)		/* normally we don't care */
+@@ -262,7 +262,7 @@
+ }
+
+ /* timeout and other signal handling cruft */
+-void tmtravel ()
++void tmtravel (int unused __attribute__((unused)))
+ {
+   signal (SIGALRM, SIG_IGN);
+   alarm (0);

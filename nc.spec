@@ -4,7 +4,7 @@ Summary(pl.UTF-8):	Proste narzędzie do testowania sieci
 Summary(pt_BR.UTF-8):	Ferramenta de teste e depuração para serviços de rede
 Name:		nc
 Version:	1.10
-Release:	23
+Release:	24
 License:	Public Domain
 Group:		Networking/Utilities
 Source0:	http://dl.sourceforge.net/nc110/%{name}110.tgz
@@ -16,6 +16,16 @@ Patch1:		%{name}-v6-20000918.patch.gz
 Patch2:		%{name}-proto.patch
 Patch3:		%{name}-halfclose.patch
 Patch4:		%{name}-timeout.patch
+# from Debian netcat-traditional, fix missing includes for modern C
+Patch5:		%{name}-missing-includes.patch
+# from Gentoo, fix signal handler signatures for modern C
+Patch6:		%{name}-signal-handler-signature.patch
+# from Debian netcat-traditional, fix implicit int return types and forward declarations
+Patch7:		%{name}-implicit-int.patch
+# from Debian netcat-traditional, fix -Wformat-security
+Patch8:		%{name}-format-security.patch
+# from Debian netcat-traditional, fix buffer read overflow
+Patch9:		%{name}-read-overflow.patch
 URL:		http://nc110.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -59,12 +69,18 @@ UDP. Também pode receber conexões.
 %patch -P2 -p1
 %patch -P3 -p1
 %patch -P4 -p1
+%patch -P5 -p1
+%patch -P6 -p1
+%patch -P7 -p1
+%patch -P8 -p1
+%patch -P9 -p1
 
 %build
 # 'make linux' works too, but builds a static binary.
 %{__make} generic \
 	DFLAGS="-DINET6 -DTELNET -DGAPING_SECURITY_HOLE" \
-	CC="%{__cc} %{rpmcppflags} %{rpmcflags}"
+	CC="%{__cc} %{rpmcppflags} %{rpmcflags}" \
+	LD="%{__cc} %{rpmcppflags} %{rpmcflags} %{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT

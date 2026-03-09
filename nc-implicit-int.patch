@@ -1,0 +1,58 @@
+--- nc/netcat.c.orig	2026-03-09 00:00:00.000000000 +0100
++++ nc/netcat.c	2026-03-09 00:00:01.000000000 +0100
+@@ -89,6 +89,10 @@
+ #include <unistd.h>		/* close, sleep, alarm, dup2, execl, read, write, getopt */
+
+ /* handy stuff: */
++#ifdef HAVE_HELP
++void helpme (void);
++#endif
++
+ #define SA struct sockaddr	/* socket overgeneralization braindeath */
+ #define SAI struct sockaddr_in	/* ... whoever came up with this model */
+ #define IA struct in_addr	/* ... should be taken out and shot, */
+@@ -727,7 +731,7 @@
+    that would be security-critical, which is why it's ifdefed out by default.
+    Use at your own hairy risk; if you leave shells lying around behind open
+    listening ports you deserve to lose!! */
+-doexec (fd)
++int doexec (fd)
+   int fd;
+ {
+   register char * p;
+@@ -1143,7 +1147,7 @@
+    Use the time delay between writes if given, otherwise use the "tcp ping"
+    trick for getting the RTT.  [I got that idea from pluvius, and warped it.]
+    Return either the original fd, or clean up and return -1. */
+-udptest (fd, where)
++int udptest (fd, where)
+   int fd;
+   IA * where;
+ {
+@@ -1455,7 +1459,7 @@
+    Use the time delay between writes if given, otherwise use the "tcp ping"
+    trick for getting the RTT.  [I got that idea from pluvius, and warped it.]
+    Return either the original fd, or clean up and return -1. */
+-udptest6(fd, where)
++int udptest6(fd, where)
+ int fd;
+ IA6 *where;
+ {
+@@ -1800,7 +1804,7 @@
+
+ /* main :
+    now we pull it all together... */
+-main (argc, argv)
++int main (argc, argv)
+   int argc;
+   char ** argv;
+ {
+@@ -2208,7 +2212,7 @@
+ #ifdef HAVE_HELP		/* unless we wanna be *really* cryptic */
+ /* helpme :
+    the obvious */
+-helpme()
++void helpme (void)
+ {
+   o_verbose = 1;
+   holler ("[v1.10]\n\

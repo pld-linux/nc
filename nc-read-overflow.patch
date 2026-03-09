@@ -1,0 +1,12 @@
+--- nc/netcat.c.orig	2026-03-09 00:00:00.000000000 +0100
++++ nc/netcat.c	2026-03-09 00:00:01.000000000 +0100
+@@ -1874,7 +1874,8 @@
+     argv[1] = cp;			/* head of new arg block */
+     fprintf (stderr, "Cmd line: ");
+     fflush (stderr);		/* I dont care if it's unbuffered or not! */
+-    insaved = read (0, cp, BIGSIZ);	/* we're gonna fake fgets() here */
++    insaved = read (0, cp, BIGSIZ - 1);	/* we're gonna fake fgets() here */
++    cp[insaved >= 0 ? insaved : 0] = '\0';	/* null-terminate */
+     if (insaved <= 0)
+       bail ("wrong");
+     x = findline (cp, insaved);

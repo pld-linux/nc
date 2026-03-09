@@ -1,0 +1,18 @@
+--- nc/netcat.c.orig	2026-03-09 00:00:00.000000000 +0100
++++ nc/netcat.c	2026-03-09 00:00:01.000000000 +0100
+@@ -73,6 +73,7 @@
+
+ /* includes: */
+ #include <sys/time.h>		/* timeval, time_t */
++#include <time.h>		/* time */
+ #include <setjmp.h>		/* jmp_buf et al */
+ #include <sys/socket.h>		/* basics, SO_ and AF_ defs, sockaddr, ... */
+ #include <netinet/in.h>		/* sockaddr_in, htons, in_addr */
+@@ -86,6 +87,7 @@
+ #include <signal.h>
+ #include <fcntl.h>		/* O_WRONLY et al */
+ #include <resolv.h>		/* res_init */
++#include <unistd.h>		/* close, sleep, alarm, dup2, execl, read, write, getopt */
+
+ /* handy stuff: */
+ #define SA struct sockaddr	/* socket overgeneralization braindeath */
